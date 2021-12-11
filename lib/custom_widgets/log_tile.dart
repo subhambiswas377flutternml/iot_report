@@ -3,7 +3,11 @@ import 'package:iot_log/utils/barrel.dart';
 
 class LogTile extends StatelessWidget
 {
-  const LogTile({Key? key}):super(key: key);
+  final LogDataModel logDataModel;
+
+  const LogTile({Key? key,
+  required this.logDataModel,
+  }):super(key: key);
 
   @override
   Widget build(BuildContext context)
@@ -25,7 +29,7 @@ class LogTile extends StatelessWidget
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // Log Name
-          Text("Electroconductivity",
+          Text(logDataModel.logTitle.toString(),
           overflow: TextOverflow.fade,
           maxLines: 2,
           textAlign: TextAlign.center,
@@ -37,7 +41,7 @@ class LogTile extends StatelessWidget
           ),
 
           // Log Value
-          Text("eui-70b3d57ed004636f",
+          Text(logDataModel.logValue.toString(),
             overflow: TextOverflow.fade,
             maxLines: 2,
             textAlign: TextAlign.center,

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget
     return Sizer(
       builder: (context, orientation, deviceType)
       {
-        return const MaterialApp(
+        return MaterialApp(
           home: HomePage(),
         );
       },

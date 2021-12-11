@@ -1,11 +1,13 @@
 import 'package:iot_log/utils/barrel.dart';
 import 'package:iot_log/custom_widgets/custom_title.dart';
 import 'package:iot_log/custom_widgets/log_tile.dart';
+import 'package:iot_log/utils/get_log_data.dart';
+import 'package:iot_log/custom_widgets/custom_loader.dart';
 
 class HomePage extends StatelessWidget
 {
-  const HomePage({Key? key}):super(key: key);
-  final int n = 5;
+  HomePage({Key? key}):super(key: key);
+  final DataController _dataController = DataController();
 
   @override
   Widget build(BuildContext context)
@@ -37,14 +39,30 @@ class HomePage extends StatelessWidget
             ),
 
             // Data List
-            SliverList(
-              delegate: SliverChildBuilderDelegate((context,index){
-                if(index==n){return SizedBox(height: 4.h,);}
-                return const LogTile();
-              },
+            FutureBuilder(
+              future: _dataController.getData(context),
+              builder: (context, snapshot)
+              {
+                if(snapshot.connectionState==ConnectionState.waiting)
+                {
+                  return const SliverToBoxAdapter(
+                    child: Center(child: CustomLoader(
+                      loadingStateName: "Loading....",
+                    ),),
+                  );
+                }
 
-              childCount: n+1,
-              ),
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate((context,index){
+                    if(index==_dataController.logData.length){return SizedBox(height: 4.h,);}
+                    return LogTile(
+                      logDataModel: _dataController.logData[index],
+                    );
+                  },
+                    childCount: _dataController.logData.length+1,
+                  ),
+                );
+              },
             ),
           ],
         ),
