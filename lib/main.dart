@@ -1,5 +1,5 @@
 import 'package:iot_log/utils/barrel.dart';
-
+import 'package:iot_log/screens/homepage.dart';
 
 void main()
 {
@@ -14,6 +14,13 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return const MaterialApp();
+    return Sizer(
+      builder: (context, orientation, deviceType)
+      {
+        return const MaterialApp(
+          home: HomePage(),
+        );
+      },
+    );
   }
 }
