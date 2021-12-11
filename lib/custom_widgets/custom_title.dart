@@ -12,12 +12,12 @@ class CustomTitle extends StatelessWidget
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(KText.appName,
-        style: TextStyle(
-          fontSize: 4.w,
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-          fontFamily: KFont.themeFont,
-        ),
+          style: TextStyle(
+            fontSize: MediaQuery.of(context).size.width*0.044,
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontFamily: KFont.themeFont,
+          ),
         ),
       ],
     );

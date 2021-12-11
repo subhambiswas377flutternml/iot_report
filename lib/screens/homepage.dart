@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget
 
             // AppBar
             SliverAppBar(
-              expandedHeight: 10.h,
+              expandedHeight: MediaQuery.of(context).size.height*0.1,
               backgroundColor: Colors.deepPurpleAccent,
               flexibleSpace: const CustomTitle(),
               floating: true,
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget
                   return const SliverToBoxAdapter(
                     child: Center(child: CustomLoader(
                       loadingStateName: "Loading....",
-                    ),),
+                    )),
                   );
                 }
 

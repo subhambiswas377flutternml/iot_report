@@ -16,14 +16,15 @@ class CustomLoader extends StatelessWidget
         // Indicator
         const CircularProgressIndicator(),
 
-        SizedBox(height: 2.h,),
+        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
         // Loading Name
         Text(loadingStateName.toString(),
         style: TextStyle(
-          fontSize: 4.w,
+          fontSize: MediaQuery.of(context).size.width*0.04,
           color: Colors.white,
-          fontWeight: FontWeight.w400
+          fontWeight: FontWeight.w400,
+          fontFamily: KFont.themeFont,
         ),
         ),
       ],

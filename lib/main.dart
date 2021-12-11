@@ -2,7 +2,7 @@ import 'package:iot_log/utils/barrel.dart';
 import 'package:iot_log/screens/homepage.dart';
 import 'package:flutter/services.dart';
 
-void main()
+Future<void> main() async
 {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
