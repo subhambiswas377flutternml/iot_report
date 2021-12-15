@@ -7,3 +7,5 @@ export 'package:iot_log/constants/texts.dart';
 export 'package:iot_log/models/log_data_model.dart';
 export 'package:iot_log/constants/base_api.dart';
 export 'package:iot_log/constants/keys.dart';
+export 'package:provider/provider.dart';
+export 'package:iot_log/utils/get_log_data.dart';
