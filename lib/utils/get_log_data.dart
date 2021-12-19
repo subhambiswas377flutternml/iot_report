@@ -9,7 +9,7 @@ class DataController extends ChangeNotifier
   bool isLoading = true;
   
   // fetching data
-  void getData(
+  Future<void> getData(
       BuildContext context,
       ) async
   {

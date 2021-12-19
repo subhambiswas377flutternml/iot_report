@@ -9,3 +9,8 @@ class KKey
   static const bod = "BOD";
   static const cod = "COD";
 }
+
+class MKey
+{
+  static const timerKey = "time";
+}

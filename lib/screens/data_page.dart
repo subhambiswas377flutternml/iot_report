@@ -23,14 +23,15 @@ class _DataPageState extends State<DataPage>
 {
 
   late Timer timer;
+  final KeepData _keepData = KeepData();
 
   @override
   void initState()
   {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 10),
-      (timer) {
-      Provider.of<DataController>(context, listen: false).getData(context);
+    timer = Timer.periodic(Duration(seconds: _keepData.timeValue!),
+      (timer) async{
+      await Provider.of<DataController>(context, listen: false).getData(context);
       });
   }
 
@@ -56,9 +57,10 @@ class _DataPageState extends State<DataPage>
 
             // AppBar
             SliverAppBar(
-              expandedHeight: MediaQuery.of(context).size.height*0.1,
+              expandedHeight: MediaQuery.of(context).size.height*0.088,
               backgroundColor: Colors.deepPurpleAccent,
-              flexibleSpace: const CustomTitle(),
+              title: const CustomTitle(),
+              centerTitle: true,
               floating: true,
               shape: const ContinuousRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -66,6 +68,15 @@ class _DataPageState extends State<DataPage>
                   bottomRight: Radius.circular(28),
                 ),
               ),
+              actions: [
+                // Time Settings
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: (){
+                    showTimeSelector(context);
+                  },
+                ),
+              ],
             ),
 
             // padding

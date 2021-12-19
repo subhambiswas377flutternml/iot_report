@@ -6,6 +6,18 @@ import 'package:iot_log/utils/get_log_data.dart';
 Future<void> main() async
 {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences _prefs = await SharedPreferences.getInstance();
+  KeepData _keepData = KeepData();
+  _keepData.prefs = _prefs;
+
+  // checking value
+  if(_keepData.prefs.getInt(MKey.timerKey)==null)
+    {
+      _keepData.prefs.setInt(MKey.timerKey, 10);
+      _keepData.timeValue = 10;
+    }
+  else{_keepData.timeValue = _keepData.prefs.getInt(MKey.timerKey);}
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
