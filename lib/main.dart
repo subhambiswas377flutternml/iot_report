@@ -22,7 +22,7 @@ Future<void> main() async
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  runApp(const MyApp());
+  runApp(Phoenix(child: const MyApp()));
 }
 
 

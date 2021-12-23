@@ -4,6 +4,7 @@ import 'package:iot_log/custom_widgets/log_tile.dart';
 import 'package:iot_log/custom_widgets/custom_loader.dart';
 import 'package:iot_log/utils/get_log_data.dart';
 import 'dart:async';
+import 'package:iot_log/screens/drawer_page.dart';
 
 class DataPage extends StatefulWidget
 {
@@ -24,6 +25,7 @@ class _DataPageState extends State<DataPage>
 
   late Timer timer;
   final KeepData _keepData = KeepData();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState()
@@ -50,6 +52,10 @@ class _DataPageState extends State<DataPage>
 
     return Scaffold(
       backgroundColor: KColors.themeBgColor,
+      key: _scaffoldKey,
+      drawer: Drawer(
+        child: DrawerPage(),
+      ),
       body: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),

@@ -1,12 +1,15 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:iot_log/utils/barrel.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 // class to fetch and save API Data
 class DataController extends ChangeNotifier
 {
   List<LogDataModel> logData = [];
+  List<DateTime> timeStamps = [];
   bool isLoading = true;
+  final ItemScrollController scrollController = ItemScrollController();
   
   // fetching data
   Future<void> getData(
@@ -41,6 +44,7 @@ class DataController extends ChangeNotifier
 
           // creating list with updated data
           logData = _tempData;
+          timeStamps.add(DateTime.now());
           print("Called Again");
         }
       
@@ -53,5 +57,10 @@ class DataController extends ChangeNotifier
 
     isLoading = false;
     notifyListeners();
+    if(timeStamps.length>1)
+      {
+        scrollController.scrollTo(index: timeStamps.length,
+            duration: const Duration(milliseconds: 10));
+      }
   }
 }

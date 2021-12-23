@@ -13,7 +13,7 @@ class CustomTitle extends StatelessWidget
       children: [
         Text(KText.appName,
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width*0.044,
+            fontSize: MediaQuery.of(context).size.width*0.04,
             color: Colors.white,
             fontWeight: FontWeight.w500,
             fontFamily: KFont.themeFont,

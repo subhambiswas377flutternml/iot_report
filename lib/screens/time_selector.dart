@@ -11,7 +11,13 @@ void showTimeSelector(BuildContext context)
         return Container(
           height: 40.h,
           width: 100.w,
-          color: const Color(0xFFFFFFFF),
+          decoration: const BoxDecoration(
+            color: KColors.themeBgColor,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10),
+              topLeft: Radius.circular(10),
+            )
+          ),
           child: const _TimeSelector(),
         );
       }
@@ -35,6 +41,7 @@ class _TimeSelectorState extends State<_TimeSelector>
 {
   late double _value;
   final KeepData _keepData = KeepData();
+  @override
   void initState()
   {
     super.initState();
@@ -70,6 +77,7 @@ class _TimeSelectorState extends State<_TimeSelector>
               fontFamily: KFont.themeFont,
               fontSize: constraint.maxWidth*0.05,
               fontWeight: FontWeight.w500,
+              color: Colors.amberAccent,
             ),
           ),
 
@@ -83,6 +91,7 @@ class _TimeSelectorState extends State<_TimeSelector>
             onPressed: (){
               _keepData.prefs.setInt(MKey.timerKey, _value.toInt());
               Navigator.of(context).pop();
+              Phoenix.rebirth(context);
             },
             style: ElevatedButton.styleFrom(
               textStyle: TextStyle(fontSize: constraint.maxWidth*0.05),
