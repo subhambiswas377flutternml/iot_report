@@ -90,6 +90,7 @@ class _TimeSelectorState extends State<_TimeSelector>
             child: const Text("Save"),
             onPressed: (){
               _keepData.prefs.setInt(MKey.timerKey, _value.toInt());
+              _keepData.timeValue = _value.toInt();
               Navigator.of(context).pop();
               Phoenix.rebirth(context);
             },
